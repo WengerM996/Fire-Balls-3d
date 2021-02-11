@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     private List<Block> _blocks;
 
     public event UnityAction<int> SizeUpdated;
+    public event UnityAction FinishReached;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class Tower : MonoBehaviour
 
         if (_blocks.Count <= 0)
         {
-            Debug.LogWarning("Tower is cleared !");
+            FinishReached?.Invoke();
         }
     }
 }
